@@ -1,2 +1,33 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1>Books</h1>
+
+<%= @books.each do |book| %>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+            <td>
+                <a class="show_1" href="https://bbd1454768c34d3aa4c86c6259dc8363.vfs.cloud9.ap-northeast-1.amazonaws.com/show">Show</a>
+            </td>
+            <td>
+                <a class="edit_1" href="https://bbd1454768c34d3aa4c86c6259dc8363.vfs.cloud9.ap-northeast-1.amazonaws.com/edit">Edit</a>
+            </td>
+            <td>
+                <%= link_to 'Destroy', book_path(book.id), method: :delete %>
+            </td>
+        </tr>
+        
+    </tbody>
+
+</table>
+
+
+<h2>New book</h2>
