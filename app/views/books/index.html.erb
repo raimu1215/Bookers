@@ -15,13 +15,13 @@
             <td><%= book.title %></td>
             <td><%= book.body %></td>
             <td>
-                <a class="show_1" href="https://bbd1454768c34d3aa4c86c6259dc8363.vfs.cloud9.ap-northeast-1.amazonaws.com/show">Show</a>
+                <%= link_to 'Show', book_path(book.id), method: :GET %>
             </td>
             <td>
-                <a class="edit_1" href="https://bbd1454768c34d3aa4c86c6259dc8363.vfs.cloud9.ap-northeast-1.amazonaws.com/edit">Edit</a>
+                <%= link_to 'Edit', edit_book_path(book.id), method: :GET %>
             </td>
             <td>
-                <%= link_to 'Destroy', book_path(book.id), method: :delete %>
+                <%= link_to 'Destroy', book_path(book.id),  method: :DELETE, "data-confirm" => "Are you sure?" %>
             </td>
         </tr>
         
@@ -29,5 +29,16 @@
 
 </table>
 
+<% end %>
 
 <h2>New book</h2>
+
+<%= form_with model: @book do |f| %>
+    <p>Title</p>
+    <%= f.text_field :title %>
+    
+    <p>Body</p>
+    <%= f.text_area :body %>
+    
+    <%= f.submit 'Create Book' %>
+<% end %>
